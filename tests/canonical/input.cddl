@@ -1,3 +1,5 @@
+constant10 = 10
+
 foo = #6.11([uint, text, bytes])
 
 bar = {
