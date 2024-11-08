@@ -509,6 +509,11 @@ impl GenerationScope {
             if let AliasIdent::Rust(ident) = alias_ident {
                 // also make sure not to generate it if we instead generated a binary wrapper type
                 if alias_info.gen_rust_alias {
+                    if let ConceptualRustType::Fixed(constant) =
+                        &alias_info.base_type.conceptual_type
+                    {
+                        continue;
+                    }
                     self.rust(types, ident).push_type_alias(
                         TypeAlias::new(
                             ident,
